@@ -44,6 +44,13 @@ const config: Config = {
     "baldbeardedbuilder",
     "clarkio",
     "laylacodesit",
+    "Dr_DinoMight",
+    "rawwwrs",
+    "codingwithluce",
+    "BrattDamon",
+    "SociableSteve",
+    "FiniteSingularity",
+    "halfpint_19"
   ],
   ignoredUsers: ["nightbot", "pretzelrocks", "ToeFrogBot", "streamelements"],
   ignoredCharacters: ["a̞", "s̾", "ȯ", "a̹", "u͖"],
