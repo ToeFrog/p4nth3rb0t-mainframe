@@ -30,8 +30,8 @@ interface Config {
 }
 
 const config: Config = {
-  broadcaster: { name: "whitep4nth3r", id: "469006291" },
-  channel: "#whitep4nth3r",
+  broadcaster: { name: "ToeFrog", id: "50336378" },
+  channel: "#ToeFrog",
   drop: {
     minAccountAge: 7 * 24 * 60 * 60 * 1000,
   },
@@ -40,14 +40,12 @@ const config: Config = {
     sizes: ["1.0", "2.0", "3.0"],
   },
   specialUsers: [
-    "thatn00b__",
+    "Whitep4nth3r",
     "baldbeardedbuilder",
-    "codingwithluce",
-    "madhousesteve",
-    "rawwwrs",
+    "clarkio",
     "laylacodesit",
   ],
-  ignoredUsers: ["nightbot", "pretzelrocks", "p4nth3rb0t"],
+  ignoredUsers: ["nightbot", "pretzelrocks", "ToeFrogBot", "streamelements"],
   ignoredCharacters: ["a̞", "s̾", "ȯ", "a̹", "u͖"],
   ignoredWords: ["bigfollows"],
   ignoredMessages: [
@@ -60,110 +58,34 @@ const config: Config = {
     },
   },
   teamShoutoutEnabled: true,
-  teamName: "The Claw",
+  teamName: "ToeFrog Friends",
   teamMembers: [
     {
       name: "baldbeardedbuilder",
       id: "279965339",
     },
     {
-      name: "brattdamon",
-      id: "254737658",
-    },
-    {
-      name: "cadillacjack1",
-      id: "501793804",
-    },
-    {
-      name: "canhorn",
-      id: "60218113",
-    },
-    {
-      name: "codejuration",
-      id: "25116716",
-    },
-    {
-      name: "codingwithluce",
-      id: "199566394",
-    },
-    {
-      name: "contentfuldevs",
-      id: "576507866",
-    },
-    {
-      name: "cowboy_salmon",
-      id: "113485816",
-    },
-    {
-      name: "dr_dinomight",
-      id: "25347823",
-    },
-    {
-      name: "exegete46",
-      id: "40856022",
-    },
-    {
-      name: "gacbl",
-      id: "120572949",
-    },
-    {
-      name: "jwalter",
-      id: "50911906",
+      name: "Whitep4nth3r",
+      id: "469006291",
     },
     {
       name: "laylacodesit",
       id: "260151116",
     },
     {
-      name: "madhousesteve",
-      id: "76884091",
-    },
-    {
-      name: "rawwwrs",
-      id: "166942660",
-    },
-    {
-      name: "ryantupo",
-      id: "158165150",
-    },
-    {
-      name: "ryan_the_rhg",
-      id: "154364425",
-    },
-    {
-      name: "sadmoody",
-      id: "28493092",
-    },
-    {
-      name: "sketchni",
-      id: "64115778",
-    },
-    {
-      name: "thatn00b__",
-      id: "235952406",
-    },
-    {
-      name: "toefrog",
-      id: "50336378",
-    },
-    {
-      name: "greg_holmes",
-      id: "93948214",
-    },
-    {
-      name: "madhouseminers",
-      id: "132113595",
-    },
+      name: "Clarkio",
+      id: "81844533"
+    }
   ],
   teamWelcomeMessage: (channel: TwitchChannel): string => {
-    return `whitep30PEWPEW ${config.teamName} team member detected! 
-    PEW PEW, @${channel.broadcaster_name}! 
+    return `${config.teamName} team member detected! 
+    Welcome, @${channel.broadcaster_name}! 
     Check out their channel here: https://twitch.tv/${channel.broadcaster_name} 
-    | They were last seen streaming ${channel.title} in ${channel.game_name} whitep30PEWPEW`;
+    | They were last seen streaming ${channel.title} in ${channel.game_name}`;
   },
   discord: {
-    liveAnnouncementsChannelId: "770041334534635520",
-    liveAnnouncementsRoleId: "756956508234842145",
+    liveAnnouncementsChannelId: "696789363069288488",
+    liveAnnouncementsRoleId: "641691491873325066",
     liveAnnouncementColorOnline: "#84AE39",
     liveAnnouncementColorOffline: "#AE8439",
     liveAnnouncementImageSize: "1280x720",

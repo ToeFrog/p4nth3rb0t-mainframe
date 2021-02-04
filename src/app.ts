@@ -32,6 +32,9 @@ async function run() {
     await tmi.connect();
     await discord.login(process.env.DISCORD_TOKEN);
 
+    // read and register all available sound commands
+    soundCommand.init();
+
     WebSocketServer.create();
 
     if (testConfig.connectToFdgt) {

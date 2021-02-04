@@ -1,4 +1,4 @@
-import WebSocket from "ws";
+ import WebSocket from "ws";
 import { webServer } from "./webserver";
 import { Packet } from "./data/types";
 //wss - web socket server
