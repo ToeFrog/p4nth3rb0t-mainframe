@@ -95,6 +95,14 @@ const config: Config = {
     {
       name: "SociableSteve",
       id: "76884091"
+    },
+    {
+      name: "finitesingularity",
+      id: "536397236"
+    },
+    {
+      name: "halfpint_19",
+      id: "471062225"
     }
   ],
   teamWelcomeMessage: (channel: TwitchChannel): string => {
