@@ -75,6 +75,26 @@ const config: Config = {
     {
       name: "Clarkio",
       id: "81844533"
+    },
+    {
+      name: "Dr_DinoMight",
+      id: "25347823"
+    },
+    {
+      name: "rawwwrs",
+      id: "166942660"
+    },
+    {
+      name: "codingwithluce",
+      id: "199566394"
+    },
+    {
+      name: "BrattDamon",
+      id: "254737658"
+    },
+    {
+      name: "SociableSteve",
+      id: "76884091"
     }
   ],
   teamWelcomeMessage: (channel: TwitchChannel): string => {
