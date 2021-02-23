@@ -40,19 +40,19 @@ const config: Config = {
     sizes: ["1.0", "2.0", "3.0"],
   },
   specialUsers: [
-    "Whitep4nth3r",
+    "whitep4nth3r",
     "baldbeardedbuilder",
     "clarkio",
     "laylacodesit",
-    "Dr_DinoMight",
+    "dr_dinoMight",
     "rawwwrs",
-    "codingwithluce",
-    "BrattDamon",
-    "SociableSteve",
-    "FiniteSingularity",
+    "lucecarter",
+    "brattdamon",
+    "sociablesteve",
+    "finitesingularity",
     "halfpint_19"
   ],
-  ignoredUsers: ["nightbot", "pretzelrocks", "ToeFrogBot", "streamelements"],
+  ignoredUsers: ["nightbot", "pretzelrocks", "toefrogbot", "streamelements"],
   ignoredCharacters: ["a̞", "s̾", "ȯ", "a̹", "u͖"],
   ignoredWords: ["bigfollows"],
   ignoredMessages: [
@@ -72,36 +72,40 @@ const config: Config = {
       id: "279965339",
     },
     {
-      name: "Whitep4nth3r",
+      name: "whitep4nth3r",
       id: "469006291",
+    },
+    {
+      name: "brattdamon",
+      id: "254737658",
+    },
+    {
+      name: "lucecarter",
+      id: "199566394",
+    },
+    {
+      name: "contentfuldevs",
+      id: "576507866",
+    },
+    {
+      name: "dr_dinomight",
+      id: "25347823",
     },
     {
       name: "laylacodesit",
       id: "260151116",
     },
     {
-      name: "Clarkio",
+      name: "clarkio",
       id: "81844533"
     },
     {
-      name: "Dr_DinoMight",
-      id: "25347823"
-    },
-    {
       name: "rawwwrs",
-      id: "166942660"
+      id: "166942660",
     },
     {
-      name: "codingwithluce",
-      id: "199566394"
-    },
-    {
-      name: "BrattDamon",
-      id: "254737658"
-    },
-    {
-      name: "SociableSteve",
-      id: "76884091"
+      name: "sociablesteve",
+      id: "76884091",
     },
     {
       name: "finitesingularity",
@@ -120,7 +124,7 @@ const config: Config = {
   },
   discord: {
     liveAnnouncementsChannelId: "696789363069288488",
-    liveAnnouncementsRoleId: "641691491873325066",
+    liveAnnouncementsRoleId: "808741580873531393",
     liveAnnouncementColorOnline: "#84AE39",
     liveAnnouncementColorOffline: "#AE8439",
     liveAnnouncementImageSize: "1280x720",
