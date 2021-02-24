@@ -43,7 +43,6 @@ const config: Config = {
     "whitep4nth3r",
     "baldbeardedbuilder",
     "clarkio",
-    "laylacodesit",
     "dr_dinoMight",
     "rawwwrs",
     "lucecarter",
@@ -65,7 +64,7 @@ const config: Config = {
     },
   },
   teamShoutoutEnabled: true,
-  teamName: "ToeFrog Friends",
+  teamName: "The Pond",
   teamMembers: [
     {
       name: "baldbeardedbuilder",
@@ -82,10 +81,6 @@ const config: Config = {
     {
       name: "lucecarter",
       id: "199566394",
-    },
-    {
-      name: "contentfuldevs",
-      id: "576507866",
     },
     {
       name: "dr_dinomight",
@@ -117,8 +112,7 @@ const config: Config = {
     }
   ],
   teamWelcomeMessage: (channel: TwitchChannel): string => {
-    return `${config.teamName} team member detected! 
-    Welcome, @${channel.broadcaster_name}! 
+    return `Welcome, @${channel.broadcaster_name} back to ${config.teamName}! 
     Check out their channel here: https://twitch.tv/${channel.broadcaster_name} 
     | They were last seen streaming ${channel.title} in ${channel.game_name}`;
   },
