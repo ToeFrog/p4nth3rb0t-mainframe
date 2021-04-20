@@ -71,6 +71,9 @@ const ChatCommands: Commands = {
   "!rain": async (tags, message) => {
     sendWeatherEvent("!rain", tags["id"] as string);
   },
+  "!panthers": async (tags, message) => {
+    sendWeatherEvent("!panthers", tags["id"] as string);
+  },
   "!shower": async (tags, message) => {
     sendWeatherEvent("!shower", tags["id"] as string);
   },
