@@ -101,7 +101,7 @@ const ChatCommands: Commands = {
   "!content": async (tags, message) => {
     tmi.say(
       config.channel,
-      "Salma is a Developer Evangelist for Contentful. Find out more about Contentful at the Developer Portal: https://www.contentful.com/developers/",
+      "Our friend @whitep4nth3r is a Developer Evangelist for Contentful. Find out more about Contentful at the Developer Portal: https://www.contentful.com/developers/",
     );
     sendImageDropEvent(ImageDrops.Contentful, tags["id"] as string);
   },
