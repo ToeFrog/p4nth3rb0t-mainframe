@@ -1,14 +1,23 @@
 import axios from "axios";
 import { UserByLoginResponse, UserByIdResponse } from "../data/types";
 
+const accountIsOlderThanSevenDays = (createdAt: string): boolean => {
+  const SEVEN_DAYS = 604800;
+  const accountCreated = new Date(createdAt).valueOf();
+  const accountCreatedEpoch = accountCreated / 1000;
+  const now = new Date().valueOf();
+  const epoch = now / 1000;
+
+  return epoch - accountCreatedEpoch > SEVEN_DAYS;
+};
+
+// TODO - Fix cache for user by login
+// it was never working anyway
+
 export default class UserManager {
   static cache = new Map<string, any>();
 
   static async getUserByLogin(login: string): Promise<UserByLoginResponse> {
-    if (this.cache.has(login)) {
-      return this.cache.get(login);
-    }
-
     const response = await axios.get(
       `https://api.twitch.tv/kraken/users?login=${login}`,
       {
@@ -16,17 +25,30 @@ export default class UserManager {
           accept: "application/vnd.twitchtv.v5+json",
           "client-id": process.env.CLIENT_ID,
         },
-      }
+      },
     );
 
-    this.cache.set(login, response.data);
+    const passesAgeCheck = accountIsOlderThanSevenDays(
+      response.data.users[0].created_at,
+    );
+
+    if (!passesAgeCheck) {
+      response.data.users[0].logo = "";
+    }
 
     return response.data;
   }
 
   static async getUserById(userId: string): Promise<UserByIdResponse> {
     if (this.cache.has(userId)) {
-      return this.cache.get(userId);
+      const data = this.cache.get(userId);
+      const passesAgeCheck = accountIsOlderThanSevenDays(data.created_at);
+
+      if (!passesAgeCheck) {
+        data.logo = "";
+      }
+
+      return data;
     }
 
     const response = await axios.get(
@@ -36,10 +58,18 @@ export default class UserManager {
           accept: "application/vnd.twitchtv.v5+json",
           "client-id": process.env.CLIENT_ID,
         },
-      }
+      },
     );
 
     this.cache.set(userId, response.data);
+
+    const passesAgeCheck = accountIsOlderThanSevenDays(
+      response.data.created_at,
+    );
+
+    if (!passesAgeCheck) {
+      response.data.logo = "";
+    }
 
     return response.data;
   }

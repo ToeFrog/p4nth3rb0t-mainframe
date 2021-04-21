@@ -2,7 +2,11 @@ import { tmi } from "./../tmi";
 import WebSocketServer from "../WebSocketServer";
 import { ChatUserstate } from "tmi.js";
 import { config } from "../config";
-import { getCommandFromMessage, ChatCommands } from "../utils/commands";
+import {
+  getCommandFromMessage,
+  ChatCommands,
+  BroadcasterCommands,
+} from "../utils/commands";
 import { isSillyQuestion } from "../utils/sillyQuestions";
 import {
   TwitchChannel,
@@ -16,6 +20,7 @@ import Giveaway from "../actions/Giveaway";
 import {
   ChatMessageData,
   ChatMessagePacket,
+  DeletedChatMessagePacket,
   MainframeEvent,
   TeamMemberJoinPacket,
 } from "p4nth3rb0t-types";
@@ -23,6 +28,22 @@ import {
 let possibleTeamMember: TeamMember | undefined;
 const teamMembers: TeamMembers = Team.getUserNames();
 const teamMembersGreeted: TeamMembers = [];
+
+const sendDeletedMessageEvent = async (messageId: string) => {
+  try {
+    const deletedChatMessageEvent: DeletedChatMessagePacket = {
+      event: MainframeEvent.deleteChatMessage,
+      id: messageId,
+      data: {
+        messageId,
+      },
+    };
+
+    WebSocketServer.sendData(deletedChatMessageEvent);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const sendChatMessageEvent = async (data: ChatMessageData) => {
   try {
@@ -57,6 +78,18 @@ const sendteamMemberJoinEvent = async (teamMember: TeamMember) => {
 };
 
 tmi.on(
+  "messagedeleted",
+  async (
+    channel: string,
+    username: string,
+    deletedMessage: string,
+    tags: ChatUserstate,
+  ) => {
+    sendDeletedMessageEvent(tags["target-msg-id"]);
+  },
+);
+
+tmi.on(
   "chat",
   async (
     channel: string,
@@ -84,7 +117,30 @@ tmi.on(
       return;
     }
 
+    /**
+     * Mods can also change the mood on the overlay
+     */
+    if (tags["user-type"] === "mod") {
+      const possibleBroadcasterCommand: string = getCommandFromMessage(
+        message,
+      ).toLowerCase();
+      const foundHandler = BroadcasterCommands[possibleBroadcasterCommand];
+
+      if (typeof foundHandler === "function") {
+        foundHandler(tags, message);
+      }
+    }
+
     if (tags.username === config.broadcaster.name) {
+      const possibleBroadcasterCommand: string = getCommandFromMessage(
+        message,
+      ).toLowerCase();
+      const foundHandler = BroadcasterCommands[possibleBroadcasterCommand];
+
+      if (typeof foundHandler === "function") {
+        foundHandler(tags, message);
+      }
+
       if (message === "!reset") {
         teamMembersGreeted.splice(0, teamMembersGreeted.length);
         tmi.say(
@@ -93,10 +149,19 @@ tmi.on(
         );
       }
 
-      if (message === Giveaway.commands.open) {
-        Giveaway.open();
+      if (message === Giveaway.commands.announce) {
+        Giveaway.announce();
 
-        tmi.say(config.channel, Giveaway.getOpenMessage());
+        tmi.say(config.channel, Giveaway.getAnnounceMessage());
+      }
+
+      if (message === Giveaway.commands.open) {
+        if (Giveaway.isOpen) {
+          tmi.say(config.channel, Giveaway.getAlreadyOpenMessage());
+        } else {
+          Giveaway.open();
+          tmi.say(config.channel, Giveaway.getOpenMessage());
+        }
       }
 
       if (message === Giveaway.commands.close) {
