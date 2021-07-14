@@ -49,7 +49,13 @@ const config: Config = {
     "brattdamon",
     "sociablesteve",
     "finitesingularity",
-    "halfpint_19"
+    "halfpint_19",
+    "cldubya",
+    "metalandcoffee_",
+    "maryjostaebler",
+    "ukmadlz",
+    "Imolalola",
+    "heccbrent"
   ],
   ignoredUsers: ["nightbot", "pretzelrocks", "toefrogbot", "streamelements"],
   ignoredCharacters: ["a̞", "s̾", "ȯ", "a̹", "u͖"],
@@ -109,6 +115,21 @@ const config: Config = {
     {
       name: "halfpint_19",
       id: "471062225"
+    }, {
+      name: "ukmadlz",
+      id: "109561494"
+    }, {
+      name: "Imolalola",
+      id: "198070643"
+    }, {
+      name: "metalandcoffee_",
+      id: "163734028"
+    }, {
+      name: "cldubya",
+      id: "231390113"
+    }, {
+      name: "heccbrent",
+      id: "50912385"
     }
   ],
   teamWelcomeMessage: (channel: TwitchChannel): string => {
